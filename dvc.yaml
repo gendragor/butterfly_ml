@@ -1,0 +1,10 @@
+stages:
+  train:
+    cmd: python -m src.pipeline --config configs/config.yaml --output-root .
+    deps:
+      - src/pipeline.py
+      - configs/config.yaml
+      - archive/BUTTERFLIES.csv
+    outs:
+      - models
+      - reports

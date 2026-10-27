@@ -3,7 +3,7 @@ project:
   image_size: 32
   max_train_per_class: 80
   augmented_copies_per_image: 1
-  use_augmentation: false
+  use_augmentation: true
   dataset_root: archive
 
 models:
