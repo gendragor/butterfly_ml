@@ -14,10 +14,12 @@
 
 ## Запуск
 
-Будет добавлено после настройки окружения:
+Запуск после установки зависимостей:
 
 ```powershell
-python -m src.pipeline --config configs/config.yaml --dataset archive
+python -m src.pipeline --config configs/config.yaml
 ```
+
+Параметры моделей находятся в `configs/config.yaml`. Измените их и повторите команду, чтобы провести новый эксперимент.
 
 Большие данные и модели не хранятся непосредственно в Git; для их версионирования используется DVC.

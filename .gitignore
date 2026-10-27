@@ -4,6 +4,7 @@ data/
 models/
 reports/
 vendor/
+tools/
 .pip-tmp/
 __pycache__/
 *.pyc
