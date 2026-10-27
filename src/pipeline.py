@@ -55,7 +55,7 @@ def collect(root: Path, split: str, size: int, limit: int | None, augment: bool,
 def make_models(cfg):
     m = cfg["models"]
     return {
-        "logistic_regression": LogisticRegression(C=m["logistic_regression"]["C"], max_iter=m["logistic_regression"]["max_iter"], solver="lbfgs", n_jobs=-1),
+        "logistic_regression": LogisticRegression(C=m["logistic_regression"]["C"], max_iter=m["logistic_regression"]["max_iter"], solver="lbfgs"),
         "random_forest": RandomForestClassifier(n_estimators=m["random_forest"]["n_estimators"], max_depth=m["random_forest"]["max_depth"], n_jobs=m["random_forest"]["n_jobs"], random_state=cfg["project"]["seed"]),
         "svm": SVC(C=m["svm"]["C"], kernel=m["svm"]["kernel"], probability=m["svm"]["probability"]),
     }
