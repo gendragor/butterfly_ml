@@ -1,0 +1,13 @@
+# Large/local data
+archive/
+data/
+models/
+reports/
+vendor/
+.pip-tmp/
+__pycache__/
+*.pyc
+.DS_Store
+
+# DVC cache
+.dvc/cache/

@@ -1,0 +1,20 @@
+project:
+  seed: 42
+  image_size: 32
+  max_train_per_class: 80
+  augmented_copies_per_image: 1
+  use_augmentation: false
+  dataset_root: archive
+
+models:
+  logistic_regression:
+    C: 1.0
+    max_iter: 300
+  random_forest:
+    n_estimators: 100
+    max_depth: 20
+    n_jobs: -1
+  svm:
+    C: 2.0
+    kernel: rbf
+    probability: false
