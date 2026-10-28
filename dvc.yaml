@@ -1,6 +1,6 @@
 stages:
   prepare:
-    cmd: python src/prepare.py --config params.yaml
+    cmd: '"C:\Program Files\Python312\python.exe" src/prepare.py --config params.yaml'
     deps:
       - src/prepare.py
       - params.yaml
@@ -9,7 +9,7 @@ stages:
       - data/processed:
           cache: false
   augment:
-    cmd: python src/augment.py --config params.yaml
+    cmd: '"C:\Program Files\Python312\python.exe" src/augment.py --config params.yaml'
     deps:
       - src/augment.py
       - data/processed
@@ -18,7 +18,7 @@ stages:
       - data/augmented:
           cache: false
   train:
-    cmd: python src/train_nn.py --config params.yaml
+    cmd: '"C:\Program Files\Python312\python.exe" src/train_nn.py --config params.yaml'
     deps:
       - src/train_nn.py
       - data/processed
@@ -27,7 +27,7 @@ stages:
     outs:
       - models/nn
   evaluate:
-    cmd: python src/evaluate.py --config params.yaml
+    cmd: '"C:\Program Files\Python312\python.exe" src/evaluate.py --config params.yaml'
     deps:
       - src/evaluate.py
       - models/nn
@@ -36,3 +36,6 @@ stages:
       - params.yaml
     outs:
       - reports/nn
+    metrics:
+      - reports/nn/test_metrics.json:
+          cache: false

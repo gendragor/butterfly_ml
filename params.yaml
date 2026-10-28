@@ -12,7 +12,7 @@ training:
   patience: 2
   learning_rate: 0.001
   max_train_per_class: 40
-  use_augmentation: false
+  use_augmentation: true
   num_workers: 0
 models:
   simplecnn:

@@ -1,5 +1,8 @@
 """Train three configurable CNN classifiers on CPU/GPU."""
 from pathlib import Path
+import sys
+_VENDOR_NN = Path(__file__).resolve().parents[1] / 'vendor_nn'
+if _VENDOR_NN.exists(): sys.path.insert(0, str(_VENDOR_NN))
 import argparse, json, random, time, yaml, torch
 from torch import nn
 from torch.utils.data import DataLoader

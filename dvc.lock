@@ -1,0 +1,104 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: '"C:\Program Files\Python312\python.exe" src/prepare.py --config params.yaml'
+    deps:
+    - path: archive/BUTTERFLIES.csv
+      hash: md5
+      md5: f1adc9b47f42c2ac95acd280b18498f4
+      size: 726356
+    - path: params.yaml
+      hash: md5
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
+    - path: src/prepare.py
+      hash: md5
+      md5: 9f9134387cd6b59195e044a29e012fa9
+      size: 1255
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 155d33c5e673dab7117397caac28d153.dir
+      size: 132385676
+      nfiles: 5001
+  augment:
+    cmd: '"C:\Program Files\Python312\python.exe" src/augment.py --config params.yaml'
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 155d33c5e673dab7117397caac28d153.dir
+      size: 132385676
+      nfiles: 5001
+    - path: params.yaml
+      hash: md5
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
+    - path: src/augment.py
+      hash: md5
+      md5: af6a5284a8721512d80fdcc93453436d
+      size: 1102
+    outs:
+    - path: data/augmented
+      hash: md5
+      md5: 52bdbe8ccfff505fe1a5eed2d2eea442.dir
+      size: 202079181
+      nfiles: 9001
+  train:
+    cmd: '"C:\Program Files\Python312\python.exe" src/train_nn.py --config params.yaml'
+    deps:
+    - path: data/augmented
+      hash: md5
+      md5: 52bdbe8ccfff505fe1a5eed2d2eea442.dir
+      size: 202079181
+      nfiles: 9001
+    - path: data/processed
+      hash: md5
+      md5: 155d33c5e673dab7117397caac28d153.dir
+      size: 132385676
+      nfiles: 5001
+    - path: params.yaml
+      hash: md5
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
+    - path: src/train_nn.py
+      hash: md5
+      md5: c5a181ff6330149eacefbceccdf1832b
+      size: 3516
+    outs:
+    - path: models/nn
+      hash: md5
+      md5: f99c6fa53f410b35ccde2a6566974e03.dir
+      size: 52037510
+      nfiles: 3
+  evaluate:
+    cmd: '"C:\Program Files\Python312\python.exe" src/evaluate.py --config params.yaml'
+    deps:
+    - path: data/augmented
+      hash: md5
+      md5: 52bdbe8ccfff505fe1a5eed2d2eea442.dir
+      size: 202079181
+      nfiles: 9001
+    - path: data/processed
+      hash: md5
+      md5: 155d33c5e673dab7117397caac28d153.dir
+      size: 132385676
+      nfiles: 5001
+    - path: models/nn
+      hash: md5
+      md5: f99c6fa53f410b35ccde2a6566974e03.dir
+      size: 52037510
+      nfiles: 3
+    - path: params.yaml
+      hash: md5
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
+    - path: src/evaluate.py
+      hash: md5
+      md5: e6546cd5b428743425693508785dfd86
+      size: 2272
+    outs:
+    - path: reports/nn
+      hash: md5
+      md5: 2468cde3e728b9d904b4eea00b7a9a36.dir
+      size: 328
+      nfiles: 1
