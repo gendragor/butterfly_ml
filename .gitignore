@@ -2,9 +2,7 @@
 archive/
 data/
 models/
-reports/*
-!reports/nn/
-!reports/nn/test_metrics.json
+reports/
 vendor/
 vendor_nn/
 vendor_dvc/
