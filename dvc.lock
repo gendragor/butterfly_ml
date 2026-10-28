@@ -9,8 +9,8 @@ stages:
       size: 726356
     - path: params.yaml
       hash: md5
-      md5: 0d1532c9130ef87792b01181f55101d8
-      size: 423
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
     - path: src/prepare.py
       hash: md5
       md5: 9f9134387cd6b59195e044a29e012fa9
@@ -31,8 +31,8 @@ stages:
       nfiles: 5001
     - path: params.yaml
       hash: md5
-      md5: 0d1532c9130ef87792b01181f55101d8
-      size: 423
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
     - path: src/augment.py
       hash: md5
       md5: af6a5284a8721512d80fdcc93453436d
@@ -58,8 +58,8 @@ stages:
       nfiles: 5001
     - path: params.yaml
       hash: md5
-      md5: 0d1532c9130ef87792b01181f55101d8
-      size: 423
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
     - path: src/train_nn.py
       hash: md5
       md5: c5a181ff6330149eacefbceccdf1832b
@@ -90,8 +90,8 @@ stages:
       nfiles: 3
     - path: params.yaml
       hash: md5
-      md5: 0d1532c9130ef87792b01181f55101d8
-      size: 423
+      md5: 22a52f27801fd1e96c48de358904917c
+      size: 399
     - path: src/evaluate.py
       hash: md5
       md5: e6546cd5b428743425693508785dfd86
@@ -99,5 +99,5 @@ stages:
     outs:
     - path: reports/nn/test_metrics.json
       hash: md5
-      md5: 876a09de1646f9aaa849fd8dd70b64fc
+      md5: 93ed40c502d4408d6fe51acf2e2cbf8a
       size: 328
