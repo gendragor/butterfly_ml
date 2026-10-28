@@ -1,0 +1,23 @@
+seed: 42
+paths:
+  raw: archive
+  processed: data/processed
+  augmented: data/augmented
+  models: models/nn
+  reports: reports/nn
+training:
+  image_size: 96
+  batch_size: 32
+  epochs: 5
+  patience: 2
+  learning_rate: 0.001
+  max_train_per_class: 40
+  use_augmentation: false
+  num_workers: 0
+models:
+  simplecnn:
+    enabled: true
+  mobilenet_v3_small:
+    enabled: true
+  resnet18:
+    enabled: true

@@ -4,6 +4,8 @@ data/
 models/
 reports/
 vendor/
+vendor_nn/
+vendor_dvc/
 tools/
 .pip-tmp/
 __pycache__/

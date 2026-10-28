@@ -1,10 +1,38 @@
 stages:
-  train:
-    cmd: python -m src.pipeline --config configs/config.yaml --output-root .
+  prepare:
+    cmd: python src/prepare.py --config params.yaml
     deps:
-      - src/pipeline.py
-      - configs/config.yaml
+      - src/prepare.py
+      - params.yaml
       - archive/BUTTERFLIES.csv
     outs:
-      - models
-      - reports
+      - data/processed:
+          cache: false
+  augment:
+    cmd: python src/augment.py --config params.yaml
+    deps:
+      - src/augment.py
+      - data/processed
+      - params.yaml
+    outs:
+      - data/augmented:
+          cache: false
+  train:
+    cmd: python src/train_nn.py --config params.yaml
+    deps:
+      - src/train_nn.py
+      - data/processed
+      - data/augmented
+      - params.yaml
+    outs:
+      - models/nn
+  evaluate:
+    cmd: python src/evaluate.py --config params.yaml
+    deps:
+      - src/evaluate.py
+      - models/nn
+      - data/processed
+      - data/augmented
+      - params.yaml
+    outs:
+      - reports/nn

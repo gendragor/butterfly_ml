@@ -1,25 +1,39 @@
 # Butterfly MLOps
 
-Практическая работа №3 по курсу «Технологии анализа данных».
+Практическая работа №3: инженерия машинного обучения для классификации 100 видов бабочек.
 
-Проект классифицирует изображения 100 видов бабочек и сравнивает три модели машинного обучения на исходных и аугментированных данных.
+## Пайплайн
 
-## План
+```text
+prepare → augment → train → evaluate
+```
 
-1. Подготовка данных и извлечение признаков.
-2. Обучение Logistic Regression, Random Forest и SVM.
-3. Сохранение трёх моделей и метрик.
-4. Аугментация обучающих изображений.
-5. Повтор эксперимента и сравнение результатов.
+- `prepare` создаёт воспроизводимую выборку из исходного датасета;
+- `augment` сохраняет дополнительные изображения с поворотом, отражением и изменением яркости;
+- `train` одним запуском обучает SimpleCNN, MobileNetV3 Small и ResNet18;
+- `evaluate` оценивает сохранённые checkpoint-файлы на неизменённом test.
+
+DVC описывает стадии в `dvc.yaml`, а параметры находятся в `params.yaml`. Большие данные и модели исключены из Git.
 
 ## Запуск
 
-Запуск после установки зависимостей:
-
 ```powershell
-python -m src.pipeline --config configs/config.yaml
+$env:PYTHONPATH="$PWD/vendor_nn;$PWD/vendor_dvc"
+python src/prepare.py --config params.yaml
+python src/augment.py --config params.yaml
+python src/train_nn.py --config params.yaml
+python src/evaluate.py --config params.yaml
 ```
 
-Параметры моделей находятся в `configs/config.yaml`. Измените их и повторите команду, чтобы провести новый эксперимент.
+Или запуск пайплайна DVC:
 
-Большие данные и модели не хранятся непосредственно в Git; для их версионирования используется DVC.
+```powershell
+$env:PYTHONPATH="$PWD/vendor_nn;$PWD/vendor_dvc"
+python -m dvc repro
+```
+
+Измените `params.yaml`, например `training.epochs`, `training.learning_rate` или `training.use_augmentation`, затем повторите запуск для нового эксперимента.
+
+## Проверенный CPU-запуск
+
+Использовано до 40 train-изображений на класс, 5 эпох и seed 42. Лучшая модель — ResNet18: test accuracy 0.546. Полная таблица находится в `nn_results.md`.
