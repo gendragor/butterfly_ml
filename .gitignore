@@ -10,6 +10,8 @@ tools/
 .pip-tmp/
 __pycache__/
 *.pyc
+~$*.docx
+*.docx
 .DS_Store
 
 # DVC cache
