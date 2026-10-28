@@ -97,8 +97,7 @@ stages:
       md5: e6546cd5b428743425693508785dfd86
       size: 2272
     outs:
-    - path: reports/nn
+    - path: reports/nn/test_metrics.json
       hash: md5
-      md5: 2468cde3e728b9d904b4eea00b7a9a36.dir
+      md5: 93ed40c502d4408d6fe51acf2e2cbf8a
       size: 328
-      nfiles: 1

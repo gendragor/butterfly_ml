@@ -34,8 +34,6 @@ stages:
       - data/processed
       - data/augmented
       - params.yaml
-    outs:
-      - reports/nn
     metrics:
       - reports/nn/test_metrics.json:
           cache: false
